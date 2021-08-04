@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <sha1.h>
+#include <stdint.h>
 #ifdef JCC
 #include <sockets.h> // needed for ASCII to EBCDIC conversion
 #endif

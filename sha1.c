@@ -23,9 +23,9 @@ A million repetitions of "a"
 
 #define SHA1HANDSOFF (1)
 
-#ifndef JCC
+//#ifndef JCC
 #include <stdint.h>
-#endif
+//#endif
 
 
 #ifdef HAVE_CONFIG_H

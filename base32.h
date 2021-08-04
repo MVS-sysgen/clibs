@@ -29,8 +29,6 @@
 #define _BASE32_H_
 
 //#include <stdint.h>
-typedef unsigned int uint32_t;
-typedef unsigned char uint8_t;
 
 
 int base32_decode(const uint8_t *encoded, uint8_t *result, int bufSize);

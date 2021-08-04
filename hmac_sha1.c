@@ -4,9 +4,9 @@
 * Copyright (C) 2010 Creytiv.com
 */
 #include <string.h>
-//#include <stdint.h>
+#include <stdint.h>
 
-
+#include <stdio.h>
 #include <sha1.h>
 #include <hmac.h>
 

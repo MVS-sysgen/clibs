@@ -84,3 +84,27 @@ To install:
     1. `cat reader.jcl | ncat --send-only -w1 localhost 3505`
 
 `BASE32` should now be installed in `SYS2.CMDLIB` and can be tested with `BASE32` or `BASE32 [base32 string]` e.g. `BASE32 JVLFGNCFKZASC===`
+
+## TOTP
+
+Generates Time based One Time Pass (TOTP)
+
+Works with Google Authenticator
+
+Files:
+- `totp_test.c` base32 library
+
+To install:
+1. Compile `base32.c`, `sha1.c`, `hmac_sha1.c`, and `totp_test.c`
+    1. `./jcc/jcc -I./jcc/include -I./ -o -D__MVS_ base32.c`
+    1. `./jcc/jcc -I./jcc/include -I./ -o -D__MVS_ hmac_sha1.c`
+    1. `./jcc/jcc -I./jcc/include -I./ -o -D__MVS_ -D_BIG_ENDIAN sha1.c`
+    1. `./jcc/jcc -I./jcc/include -I./ -o -D__MVS_ totp_test.c`
+1. Prelink the object together with jcc (`totptest.load` is the output from this command):
+    1. `./jcc/prelink -test=file -r ./jcc/objs totptest.load base32.obj hmac_sha1.obj  sha1.obj  totp_test.obj`
+1. Create object cards in EBCDIC with `rdrprep` (the output of this is `reader.jcl`):
+    1. `rdrprep totp_link.jcl.template`
+1. Submit this JCL to MVS 3.8j (replace `localhost` with your hercules IP address if on a different machine):
+    1. `cat reader.jcl | ncat --send-only -w1 localhost 3505`
+
+`TOTPTEST` should now be installed in `SYS2.CMDLIB` and can be tested with `TOTPTEST` or `TOTPTEST [secret key]` e.g. `TOTPTEST JBSWY3DPEHPK3PXX`

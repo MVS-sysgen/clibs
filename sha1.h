@@ -3,14 +3,11 @@
 *
 * Copyright (C) 2010 Creytiv.com
 */
-
+//#include <stdint.h>
 #ifndef SHA_H_
 #define SHA_H_ (1)
 /* public api for steve reid's public domain SHA-1 implementation */
 /* this file is in the public domain */
-
-typedef unsigned int uint32_t;
-typedef unsigned char uint8_t;
 
 /** SHA-1 Context */
 typedef struct {

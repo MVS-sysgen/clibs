@@ -1,19 +1,27 @@
-/* hmac_test for jcc/MVS */
+/* TOTP for Google Authenticator */
 
-/* Take two arguments data and key and computes hmac
-   requires sha1.c */
+/* Can be used with gcc but meant for jcc/MVS */
+
+/* Take 1 argument: Base32 TOTP secret */
 
 #include <stdio.h>
 #include <string.h>
 #include <hmac.h>
-#include <stdint.h>
+#include <sha1.h>
 
 int main(int argc, char *argv[]) {
-    char *sec_key;
+    const char *base32_value;
     char *data;
     char out[256] = {0};
     unsigned int len = sizeof(out);
-    int i;
+    int i, epoch;
+    time_t seconds;
+
+
+    seconds = time(NULL);
+    data = (int)(seconds/30)
+    printf("Seconds since January 1, 1970 = %ld\n", seconds);
+    printf("Interval: %d\n", (int)data);
 
     if( argc == 3 ) {
          sec_key = argv[1];
